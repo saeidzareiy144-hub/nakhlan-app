@@ -143,7 +143,20 @@ class _StoreShellState extends State<StoreShell> {
   Widget categoryPage() => ListView(padding: const EdgeInsets.all(14), children: [
     TextField(decoration: InputDecoration(prefixIcon: const Icon(Icons.search), hintText: 'جست‌وجوی محصولات نخلان...', filled: true, fillColor: Colors.white, border: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: BorderSide.none)), onChanged: (v) => setState(() => query = v)),
     const SizedBox(height: 12),
-    Wrap(spacing: 8, runSpacing: 8, children: ['همه', 'خرما', 'هدیه و بسته‌بندی', 'محصولات جانبی'].map((c) => ChoiceChip(label: Text(c), selected: category == c, onSelected: (_) => setState(() { category = c; tab = 1; }))).toList()),
+          Wrap(
+        spacing: 8,
+        runSpacing: 8,
+        children: ['همه', 'خرما', 'هدیه و بسته‌بندی', 'محصولات جانبی']
+            .map((c) => ChoiceChip(
+                  label: Text(c),
+                  selected: category == c,
+                  onSelected: (_) => setState(() {
+                    category = c;
+                    tab = 1;
+                  }),
+                ))
+            .toList(),
+      ),
     const SizedBox(height: 12),
     ...filteredProducts().map(productCard),
   ]);
