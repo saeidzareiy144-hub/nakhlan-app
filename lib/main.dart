@@ -129,7 +129,20 @@ class _StoreShellState extends State<StoreShell> {
       const SizedBox(height: 20),
       const SectionTitle('دسته‌بندی محصولات'),
       const SizedBox(height: 8),
-      Wrap(spacing: 8, runSpacing: 8, children: ['همه', 'خرما', 'هدیه و بسته‌بندی', 'محصولات جانبی'].map((c) => ChoiceChip(label: Text(c), selected: category == c, onSelected: (_) => setState(() { category = c; tab = 1; })).toList()),
+      Wrap(
+  spacing: 8,
+  runSpacing: 8,
+  children: ['همه', 'خرما', 'هدیه و بسته‌بندی', 'محصولات جانبی']
+      .map((c) => ChoiceChip(
+            label: Text(c),
+            selected: category == c,
+            onSelected: (_) => setState(() {
+              category = c;
+              tab = 1;
+            }),
+          ))
+      .toList(),
+),
       const SizedBox(height: 20),
       const SectionTitle('محصولات منتخب'),
       const SizedBox(height: 8),
