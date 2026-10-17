@@ -97,11 +97,18 @@ class _StoreState extends State<Store> {
     TextField(decoration: const InputDecoration(prefixIcon: Icon(Icons.search), hintText: 'جست‌وجوی محصولات'),
       onChanged: (v) => setState(() => query = v)),
     const SizedBox(height: 10),
-    Wrap(spacing: 6, children: ['همه', 'خرما', 'هدیه و بسته‌بندی', 'محصولات جانبی'].map((c) =>
-      ChoiceChip(label: Text(c), selected: category == c, onSelected: (_) => setState(() => category = c)).toList()),
-    const SizedBox(height: 10), ...filtered.map(productTile),
-  ]);
-
+        Wrap(
+      spacing: 6,
+      children: ['همه', 'خرما', 'هدیه و بسته‌بندی', 'محصولات جانبی']
+          .map((c) => ChoiceChip(
+                label: Text(c),
+                selected: category == c,
+                onSelected: (_) => setState(() => category = c),
+              ))
+          .toList(),
+    ),
+    const SizedBox(height: 10),
+    ...filtered.map(productTile),
   Widget productTile(Product p) => Card(margin: const EdgeInsets.only(bottom: 10), child: Padding(
     padding: const EdgeInsets.all(10), child: Row(children: [
       ClipRRect(borderRadius: BorderRadius.circular(10), child: Image.network(p.image, width: 82, height: 82, fit: BoxFit.cover,
